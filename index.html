@@ -29,8 +29,8 @@
       <h2 id="helpTitle">FIND THE FLOW</h2>
       <div class="help-copy">
         <p><b>Tilt</b> diagonally to queue a hop. The first steady sample is your neutral calibration.</p>
-        <p><b>Phase</b> shields you for three seconds. Wheel up fires it; touch works too.</p>
-        <p><b>Touch</b> the direction pads if motion is unavailable. Keys 1–4 simulate directions.</p>
+        <p><b>Phase</b> shields you for three seconds. Double tap the field to fire it; wheel up also works.</p>
+        <p><b>Drag</b> from the hopper toward any diagonal corner to hop. Keys 1–4 remain a browser fallback.</p>
         <p><b>Side button</b> pauses a run. A short, moving camera keeps the next prisms in view.</p>
       </div>
       <button id="backBtn" class="primary">BACK</button>
@@ -47,11 +47,8 @@
       <div class="status-row"><div id="status" class="status">TILT TO HOP</div><div id="cameraState">CAMERA LOCK</div></div>
       <div id="boardWrap"><canvas id="board" width="230" height="149" aria-label="Scrolling isometric Prism Hop board"></canvas></div>
       <div class="ability-row"><button id="phaseBtn" class="ability" aria-label="Activate Phase Ring">PHASE <span id="phaseState">READY</span></button><span id="sensorState">MOTION: CHECKING</span></div>
-      <div id="controls" class="controls" aria-label="Accessible direction controls">
-        <button data-dir="ul" aria-label="Hop up left">↖</button><button data-dir="ur" aria-label="Hop up right">↗</button>
-        <button data-dir="dl" aria-label="Hop down left">↙</button><button data-dir="dr" aria-label="Hop down right">↘</button>
-      </div>
-      <p class="hint game-hint">Wheel up: Phase · Side: pause</p>
+      <div id="gesturePad" class="gesture-pad" aria-label="Drag from the hopper toward a diagonal to hop. Double tap the field to activate Phase."></div>
+      <p class="hint game-hint">Drag to hop · Double tap: Phase · Side: pause</p>
     </section>
 
     <section id="pause" class="screen overlay" aria-labelledby="pauseTitle">

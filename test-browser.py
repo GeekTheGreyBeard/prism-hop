@@ -42,11 +42,19 @@ with sync_playwright() as p:
     page.locator('#pauseBtn').click();page.wait_for_timeout(40)
     assert page.locator('#pause').is_visible();shot(page,'pause-240x282.png')
     page.locator('#resumeBtn').click();page.wait_for_timeout(40)
-    # Touch fallback remains live even without a physical bridge.
-    page.locator('[data-dir="dr"]').click();page.wait_for_timeout(40)
+    # The control plane is deliberately invisible: dragging from the hopper toward a corner hops;
+    # a double tap on the same field fires Phase without a visible direction pad.
+    pad=page.locator('#gesturePad')
+    box=pad.bounding_box();assert box and box['width']==230 and box['height']==149, box
+    page.mouse.move(box['x']+115,box['y']+74);page.mouse.down();page.mouse.move(box['x']+205,box['y']+132,steps=2);page.mouse.up();page.wait_for_timeout(40)
+    page.mouse.dblclick(box['x']+118,box['y']+74);page.wait_for_timeout(60)
+    assert page.locator('#phaseState').inner_text() == 'ACTIVE'
     page.evaluate('window.PrismHopTest.forceWin()');page.wait_for_timeout(260)
     assert page.locator('#result').is_visible();shot(page,'result-240x282.png')
     assert no_overflow(page), 'game screen overflows 240x282'
+    # Chromium rendering budget check only; this is not a physical R1 frame-rate result.
+    frames=page.evaluate('''() => new Promise(resolve => { const samples=[]; let prev=performance.now(); function tick(t){samples.push(t-prev);prev=t;if(samples.length===45)resolve(samples);else requestAnimationFrame(tick)}requestAnimationFrame(tick) })''')
+    frames.sort();assert frames[int(len(frames)*.90)] < 50, frames
     assert not errors, errors
     browser.close()
-print('browser checks passed: 240x282 menu/game/pause/results, scrolling board, simulated motion and touch fallback')
+print('browser checks passed: 240x282 menu/game/pause/results, scrolling board, motion, gesture fallback, and Chromium frame pacing')
