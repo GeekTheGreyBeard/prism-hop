@@ -59,4 +59,4 @@ The installation QR below encodes the Rabbit Creations SDK metadata card in [`cr
 
 ![Installation QR](./prism-hop-install.png)
 
-Published Creation: [Rabbit-hosted Prism Hop](https://prism-hop-0rcxib.intern.rabbitos.app/index.html) · [GitHub Pages mirror](https://geekthegreybeard.github.io/prism-hop/) · [metadata card](https://geekthegreybeard.github.io/prism-hop/creation-card.json).
+Published Creation: [Rabbit-hosted Prism Hop](https://prism-hop-o70p5s.intern.rabbitos.app/index.html) · [GitHub Pages mirror](https://geekthegreybeard.github.io/prism-hop/) · [metadata card](https://geekthegreybeard.github.io/prism-hop/creation-card.json).
