@@ -19,6 +19,12 @@ with sync_playwright() as p:
     page.goto('http://127.0.0.1:8765/?test=1',wait_until='networkidle')
     assert no_overflow(page), 'menu overflows 240x282'
     assert page.locator('#menu').is_visible()
+    # Muting changes the visible state and suppresses every procedural cue; unmuting restores it.
+    assert page.locator('#soundBtn').get_attribute('aria-label') == 'Mute sound'
+    page.locator('#soundBtn').click()
+    assert page.locator('#soundBtn').get_attribute('aria-label') == 'Enable sound'
+    page.locator('#soundBtn').click()
+    assert page.locator('#soundBtn').get_attribute('aria-label') == 'Mute sound'
     shot(page,'menu-240x282.png')
     page.locator('#startBtn').click()
     page.wait_for_timeout(140)
