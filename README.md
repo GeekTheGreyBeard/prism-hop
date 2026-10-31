@@ -1,16 +1,16 @@
-# Prism Hop
+# rBert
 
-**Prism Hop** is an original isometric arcade game for the rabbit r1. Guide a bright hopper across expanded prism fields, tune every tile, evade Static Crawlers, and use a short Phase Ring at the right moment.
+**rBert** is an original isometric arcade game for the rabbit r1. Guide a bright hopper across expanded prism fields, tune every tile, evade Static Crawlers, and use a short Phase Ring at the right moment.
 
-![Prism Hop menu at 240×282](./test-results/menu-240x282.png)
+![rBert menu at 240×282](./test-results/menu-240x282.png)
 
 ## The upgrade
 
 The playable fields now begin at **8 rows / 36 prism tiles** and end at **11 rows / 66 tiles**. The original release ranged from 4 rows / 10 tiles to 7 rows / 28 tiles. Tiles are smaller in world space, while a clamped chase camera scrolls through the expanded field and keeps the hopper roughly centered during travel. The apex and field edges remain bounded, so the camera does not show beyond the course.
 
-The presentation is built for the 240×282 R1 viewport: an original illustrated floating-crystal atmosphere is composited into the menu and each route's board, with six color-scripted level themes, faceted rune-lit prisms, a signal-courier hopper, Static Crawler silhouettes, crack-lit hazards, burst effects, and a compact high-contrast HUD. The canvas artwork is layered rather than decorative: the same themed sky sits behind the scrolling tile world as its camera moves.
+The presentation is built for the 240×282 R1 viewport. The active board now occupies 190 pixels of its height (up from 149): an original illustrated floating-crystal atmosphere is composited into the menu and each route's board, with six color-scripted level themes, faceted rune-lit prisms, a signal-courier hopper, Static Crawler silhouettes, crack-lit hazards, burst effects, and a compact high-contrast HUD. The canvas artwork is layered rather than decorative: the same themed sky sits behind the scrolling tile world as its camera moves.
 
-![Expanded scrolling prism field at 240×282](./test-results/game-240x282.png)
+![Expanded rBert scrolling prism field at 240×282](./test-results/game-240x282.png)
 
 ## Play
 
@@ -57,6 +57,6 @@ python3 test-browser.py
 
 The installation QR below encodes the Rabbit Creations SDK metadata card in [`creation-card.json`](./creation-card.json). On an R1, open **Creations → Create → Add via QR code** and scan it from another screen.
 
-![Installation QR](./prism-hop-install.png)
+![rBert installation QR](./prism-hop-install.png)
 
-Published Creation: [Rabbit-hosted Prism Hop](https://prism-hop-o70p5s.intern.rabbitos.app/index.html) · [GitHub Pages mirror](https://geekthegreybeard.github.io/prism-hop/) · [metadata card](https://geekthegreybeard.github.io/prism-hop/creation-card.json).
+Published Creation: [Rabbit-hosted rBert](https://rbert-p87w62.intern.rabbitos.app/index.html) · [GitHub Pages mirror](https://geekthegreybeard.github.io/prism-hop/) · [metadata card](https://geekthegreybeard.github.io/prism-hop/creation-card.json).
