@@ -59,6 +59,9 @@ with sync_playwright() as p:
     page.evaluate('window.RBertTest.forceWin()');page.wait_for_timeout(260)
     assert page.locator('#result').is_visible();shot(page,'result-240x282.png')
     assert no_overflow(page), 'game screen overflows 240x282'
+    page.reload(wait_until='networkidle')
+    assert page.locator('#menu').is_visible()
+    assert no_overflow(page), 'reload overflows 240x282'
     # Chromium rendering budget check only; this is not a physical R1 frame-rate result.
     frames=page.evaluate('''() => new Promise(resolve => { const samples=[]; let prev=performance.now(); function tick(t){samples.push(t-prev);prev=t;if(samples.length===45)resolve(samples);else requestAnimationFrame(tick)}requestAnimationFrame(tick) })''')
     frames.sort();assert frames[int(len(frames)*.90)] < 50, frames
