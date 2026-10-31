@@ -10,13 +10,14 @@
 <body>
   <main id="app" aria-live="polite">
     <section id="menu" class="screen active" aria-labelledby="title">
-      <div class="eyebrow">ORIGINAL ARCADE</div>
+      <div class="logo-line"><span class="eyebrow">ORIGINAL ARCADE</span><button id="soundBtn" class="sound-button" aria-label="Toggle sound">◖)))</button></div>
+      <div class="hero-art" aria-hidden="true"><i></i><b></b><em></em></div>
       <h1 id="title">PRISM<br>HOP</h1>
       <p class="tagline">Tune the skyline. Out-hop the static.</p>
       <div class="menu-card">
         <div class="level-line"><span>ROUTE</span><strong id="routeName">01 · Dawn Array</strong></div>
         <div id="routeDots" class="dots" aria-label="Route selection"></div>
-        <p id="routeInfo" class="small">4 rows · one static crawler</p>
+        <p id="routeInfo" class="small">8 rows · 36 prism tiles · 1 crawler</p>
       </div>
       <button id="startBtn" class="primary">START HOP</button>
       <button id="helpBtn" class="text-button">HOW TO PLAY</button>
@@ -24,13 +25,13 @@
     </section>
 
     <section id="help" class="screen" aria-labelledby="helpTitle">
-      <div class="eyebrow">CONTROLS</div>
-      <h2 id="helpTitle">MAKE YOUR MOVE</h2>
+      <div class="logo-line"><span class="eyebrow">CONTROLS</span><button class="sound-button sound-copy" aria-label="Sound state">◖)))</button></div>
+      <h2 id="helpTitle">FIND THE FLOW</h2>
       <div class="help-copy">
-        <p><b>Tilt</b> the R1 to choose a diagonal. Your hopper jumps when tilted.</p>
-        <p><b>Wheel up</b> fires a 3-second Phase Ring that clears danger on your tile.</p>
-        <p><b>Touch</b> a direction pad if motion is unavailable. Keys 1–4 simulate directions.</p>
-        <p><b>Side button</b> pauses during a run. The on-screen buttons work everywhere.</p>
+        <p><b>Tilt</b> diagonally to queue a hop. The first steady sample is your neutral calibration.</p>
+        <p><b>Phase</b> shields you for three seconds. Wheel up fires it; touch works too.</p>
+        <p><b>Touch</b> the direction pads if motion is unavailable. Keys 1–4 simulate directions.</p>
+        <p><b>Side button</b> pauses a run. A short, moving camera keeps the next prisms in view.</p>
       </div>
       <button id="backBtn" class="primary">BACK</button>
     </section>
@@ -41,19 +42,20 @@
         <div><span class="hud-label">SCORE</span><strong id="score">00000</strong></div>
         <div><span class="hud-label">LIVES</span><strong id="lives">●●●</strong></div>
         <div><span class="hud-label">LEVEL</span><strong id="level">01</strong></div>
+        <button id="gameSoundBtn" class="sound-button hud-sound" aria-label="Toggle sound">◖)))</button>
       </header>
-      <div id="status" class="status">TILT TO HOP</div>
-      <div id="boardWrap"><div id="board" aria-label="Isometric Prism Hop board"></div></div>
+      <div class="status-row"><div id="status" class="status">TILT TO HOP</div><div id="cameraState">CAMERA LOCK</div></div>
+      <div id="boardWrap"><canvas id="board" width="230" height="149" aria-label="Scrolling isometric Prism Hop board"></canvas></div>
       <div class="ability-row"><button id="phaseBtn" class="ability" aria-label="Activate Phase Ring">PHASE <span id="phaseState">READY</span></button><span id="sensorState">MOTION: CHECKING</span></div>
       <div id="controls" class="controls" aria-label="Accessible direction controls">
         <button data-dir="ul" aria-label="Hop up left">↖</button><button data-dir="ur" aria-label="Hop up right">↗</button>
         <button data-dir="dl" aria-label="Hop down left">↙</button><button data-dir="dr" aria-label="Hop down right">↘</button>
       </div>
-      <p class="hint game-hint">Wheel up: Phase Ring · Side: pause</p>
+      <p class="hint game-hint">Wheel up: Phase · Side: pause</p>
     </section>
 
     <section id="pause" class="screen overlay" aria-labelledby="pauseTitle">
-      <div class="dialog"><div class="eyebrow">RUN PAUSED</div><h2 id="pauseTitle">CATCH YOUR BREATH</h2><button id="resumeBtn" class="primary">RESUME</button><button id="restartBtn" class="secondary">RESTART ROUTE</button><button id="menuBtn" class="text-button">RETURN TO MENU</button></div>
+      <div class="dialog"><div class="eyebrow">RUN PAUSED</div><h2 id="pauseTitle">CATCH YOUR BREATH</h2><p class="tagline">Your prism field is held in place.</p><button id="resumeBtn" class="primary">RESUME</button><button id="restartBtn" class="secondary">RESTART ROUTE</button><button id="menuBtn" class="text-button">RETURN TO MENU</button></div>
     </section>
 
     <section id="result" class="screen overlay" aria-labelledby="resultTitle">
